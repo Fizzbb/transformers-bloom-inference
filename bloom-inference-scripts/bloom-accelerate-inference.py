@@ -80,9 +80,10 @@ if infer_dtype == "int8":
 else:
     kwargs["torch_dtype"] = dtype
 
-
+# could add cache_dir="/mnt/nvme/models/"
 model = AutoModelForCausalLM.from_pretrained(model_name, **kwargs)
-
+# check model mapping
+print(model.hf_device_map)
 
 if args.benchmark:
     t_ready = time.time()
